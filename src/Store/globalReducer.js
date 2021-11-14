@@ -8,7 +8,7 @@ const initialState = {
   googleLogged: false,
 };
 
-export default function GlobalReducer(state = initialState, action) {
+export function GlobalReducer(state = initialState, action) {
   switch (action.type) {
     case 'SET_LOADING':
       return {

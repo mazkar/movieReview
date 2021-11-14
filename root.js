@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
 export default function Root() {
   return (
     <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           component={Home}
           name="Home"
