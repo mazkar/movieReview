@@ -4,6 +4,7 @@ const initialState = {
   access_token: '',
   isError: false,
   isLoading: false,
+  isLogged: false,
 };
 
 export const LoginReducer = (state = initialState, action) => {
@@ -23,6 +24,7 @@ export const LoginReducer = (state = initialState, action) => {
         ...state,
         access_token: action.payload,
         isError: false,
+        isLogged: true,
       };
     case 'POST_LOGIN':
       return {
@@ -34,6 +36,12 @@ export const LoginReducer = (state = initialState, action) => {
       return {
         ...state,
         isError: true,
+      };
+    case 'LOGOUT':
+      return {
+        ...state,
+        access_token: '',
+        isLogged: false,
       };
     default:
       return state;

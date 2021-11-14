@@ -18,3 +18,10 @@ export const setTokenToLoginReducer = payload => {
     payload,
   };
 };
+
+export const logout = payload => {
+  return {
+    type: 'LOGOUT',
+    payload,
+  };
+};

@@ -3,11 +3,12 @@ import {ToastAndroid} from 'react-native';
 import {put, takeLatest} from 'redux-saga/effects';
 import {setErrorLogin, postLogin, setTokenToLoginReducer} from './LoginAction';
 import {navigate} from './../../../Utils/Navigation';
-import {setLoading} from './../../../Store/globalAction';
+import {setLoading, setIsLogged} from './../../../Store/globalAction';
 
 function* sagaLogin(action) {
   try {
     yield put(setLoading(true));
+    yield put(setIsLogged(true));
 
     const result = yield axios.post(
       'https://movieapp-glints.herokuapp.com/api/v1/users/signin',
@@ -16,6 +17,7 @@ function* sagaLogin(action) {
     console.log(result, 'result Login');
     if (result.status === 200) {
       yield put(setTokenToLoginReducer(result.data.data));
+      yield navigate('Home');
     }
   } catch (error) {
     console.log(error, 'error login');
